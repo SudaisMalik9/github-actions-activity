@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  ACTIVITY_NAME: GitHub Actions Module 3
+  ACTIVITY_NAME: "GitHub Actions Module 3"
 
 jobs:
   inspect-contexts:
