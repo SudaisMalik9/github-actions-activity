@@ -1,0 +1,39 @@
+
+name: Module 3 - Contexts and Conditionals
+
+on:
+  workflow_dispatch:
+
+env:
+  ACTIVITY_NAME: GitHub Actions Module 3
+
+jobs:
+  inspect-contexts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show context values
+        env:
+          ACTIVITY_LABEL: ${{ vars.ACTIVITY_LABEL }}
+        run: |
+          echo "Workflow: $GITHUB_WORKFLOW"
+          echo "Event: $GITHUB_EVENT_NAME"
+          echo "Actor: $GITHUB_ACTOR"
+          echo "Runner OS: $RUNNER_OS"
+          echo "Activity: $ACTIVITY_NAME"
+          echo "Repository: $GITHUB_REPOSITORY"
+          echo "Repository variable: $ACTIVITY_LABEL"
+
+      - name: Demonstrate contains and success
+        if: ${{ contains(github.event_name, 'workflow_dispatch') && success() }}
+        run: echo "Condition passed: contains() and success()"
+
+      - name: Demonstrate always
+        if: ${{ always() }}
+        run: echo "This step runs even if a previous step fails."
+
+      - name: Demonstrate failure condition
+        if: ${{ failure() }}
+        run: echo "A previous step failed."
