@@ -1,0 +1,29 @@
+
+name: Manual Workflow Dispatch
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Sudais Malik"
+        required: true
+        type: string
+      greeting:
+        description: "Greeting message"
+        required: true
+        default: "Hello"
+        type: string
+      data:
+        description: "Test data"
+        required: true
+        default: "GitHub Actions PoC"
+        type: string
+
+jobs:
+  manual-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display manual inputs
+        run: |
+          echo "${{ inputs.greeting }}, ${{ inputs.name }}!"
+          echo "Data: ${{ inputs.data }}"
