@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       name:
-        description: "Sudais Malik"
+        description: "Your Name"
         required: true
         type: string
       greeting:
