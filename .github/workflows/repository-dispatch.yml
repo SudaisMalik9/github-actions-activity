@@ -1,0 +1,16 @@
+name: Repository Dispatch Test
+
+on:
+  repository_dispatch:
+    types: [custom-webhook]
+
+jobs:
+  dispatch-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Confirm external trigger
+        run: |
+          echo "Repository dispatch event received!"
+          echo "Event type: ${{ github.event.action }}"
+          echo "Message: ${{ github.event.client_payload.message }}"
