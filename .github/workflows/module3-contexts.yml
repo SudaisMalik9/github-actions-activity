@@ -28,12 +28,15 @@ jobs:
 
       - name: Demonstrate contains and success
         if: ${{ contains(github.event_name, 'workflow_dispatch') && success() }}
-        run: echo "Condition passed: contains() and success()"
+        run: |
+          echo "Condition passed: contains() and success()"
 
       - name: Demonstrate always
         if: ${{ always() }}
-        run: echo "This step runs even if a previous step fails."
+        run: |
+          echo "This step runs even if a previous step fails."
 
       - name: Demonstrate failure condition
         if: ${{ failure() }}
-        run: echo "A previous step failed."
+        run: |
+          echo "A previous step failed."
