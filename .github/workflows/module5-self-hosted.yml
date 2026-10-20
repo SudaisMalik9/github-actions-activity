@@ -16,3 +16,5 @@ jobs:
           Write-Host "Runner: $env:RUNNER_NAME"
           Write-Host "OS: $env:RUNNER_OS"
           Write-Host "Architecture: $env:RUNNER_ARCH"
+        env:
+          POWERSHELL_TELEMETRY_OPTOUT: "1"
