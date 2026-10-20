@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Show runner details
-        shell: pwsh
+        shell: powershell
         run: |
           Write-Host "Self-hosted runner job succeeded!"
           Write-Host "Runner: $env:RUNNER_NAME"
