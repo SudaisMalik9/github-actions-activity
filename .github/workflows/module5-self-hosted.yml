@@ -1,0 +1,18 @@
+
+name: Module 5B - Self-Hosted Runner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  self-hosted-test:
+    runs-on: [self-hosted, Windows, X64, custom-windows]
+
+    steps:
+      - name: Show runner details
+        shell: pwsh
+        run: |
+          Write-Host "Self-hosted runner job succeeded!"
+          Write-Host "Runner: $env:RUNNER_NAME"
+          Write-Host "OS: $env:RUNNER_OS"
+          Write-Host "Architecture: $env:RUNNER_ARCH"
