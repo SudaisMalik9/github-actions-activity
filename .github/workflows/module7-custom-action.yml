@@ -16,7 +16,9 @@ jobs:
         id: greeting
         uses: SudaisMalik9/hello-custom-action@v1.0.0
         with:
-          who-to-greet: 'Sudais'
+          who-to-greet: "Sudais"
 
       - name: Display action output
-        run: echo "Greeting time: ${{ steps.greeting.outputs.time }}"
+        env:
+          GREETING_TIME: ${{ steps.greeting.outputs.time }}
+        run: echo "Greeting time: $GREETING_TIME"
