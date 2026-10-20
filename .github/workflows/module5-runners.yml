@@ -1,0 +1,50 @@
+
+name: Module 5 - Multi-OS Runners
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ubuntu-runner:
+    name: Ubuntu Runner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show Ubuntu information
+        run: |
+          echo "Running on Ubuntu"
+          uname -a
+          cat /etc/os-release
+
+  windows-runner:
+    name: Windows Runner
+    runs-on: windows-latest
+    steps:
+      - name: Show Windows information
+        shell: pwsh
+        run: |
+          Write-Host "Running on Windows"
+          Get-ComputerInfo | Select-Object WindowsProductName, WindowsVersion
+      - name: Check Chocolatey
+        shell: pwsh
+        run: |
+          choco --version
+      - name: Run PowerShell script
+        shell: pwsh
+        run: |
+          Write-Host "PowerShell script executed successfully"
+          $number = 10
+          Write-Host "Test number: $number"
+
+  macos-runner:
+    name: macOS Runner
+    runs-on: macos-latest
+    steps:
+      - name: Show macOS information
+        run: |
+          sw_vers
+          swift --version
+      - name: Compile and run Swift program
+        run: |
+          echo 'print("Hello from the macOS Swift runner!")' > hello.swift
+          swiftc hello.swift -o hello
+          ./hello
