@@ -1,5 +1,4 @@
-
-name: Module 5B - Self-Hosted Runner
+﻿name: Module 5B - Self-Hosted Runner
 
 on:
   workflow_dispatch:
@@ -10,11 +9,9 @@ jobs:
 
     steps:
       - name: Show runner details
-        shell: powershell
+        shell: powershell -ExecutionPolicy Bypass {0}
         run: |
           Write-Host "Self-hosted runner job succeeded!"
           Write-Host "Runner: $env:RUNNER_NAME"
           Write-Host "OS: $env:RUNNER_OS"
           Write-Host "Architecture: $env:RUNNER_ARCH"
-        env:
-          POWERSHELL_TELEMETRY_OPTOUT: "1"
